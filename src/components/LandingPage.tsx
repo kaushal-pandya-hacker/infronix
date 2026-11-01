@@ -35,6 +35,8 @@ interface LandingPageProps {
   isAdminMode?: boolean;
 }
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 export const LandingPage: React.FC<LandingPageProps> = ({
   onOpenAdminQr,
   isAdminMode = false,
@@ -59,7 +61,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
     if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
       try {
         await navigator.share(shareData);
-      } catch (err) {
+      } catch {
         // User cancelled or share failed, fallback to copy
         copyLink();
       }
@@ -243,7 +245,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       {/* Clean Footer (Requirement 6: White-label, no third-party branding) */}
       <footer className="relative z-10 w-full max-w-md px-6 py-6 flex flex-col items-center justify-center text-center border-t border-[#0D182E]">
         <div className="flex items-center gap-2 text-xs text-[#5D7399]">
-          <span>© {new Date().getFullYear()} {siteConfig.name}</span>
+          <span>© {CURRENT_YEAR} {siteConfig.name}</span>
           <span>•</span>
           <span>All rights reserved</span>
         </div>

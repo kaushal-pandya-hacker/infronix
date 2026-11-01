@@ -8,7 +8,7 @@ import type {
 } from 'qr-code-styling';
 import QRCode from 'qrcode';
 import jsQR from 'jsqr';
-import { getInfronixLogoDataUri } from '../components/BrandLogo';
+import { getInfronixLogoDataUri } from './logoSvg';
 
 export interface CustomQROptions {
   url: string;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useId } from 'react';
+import React, { useState, useEffect, useRef, useId, useCallback } from 'react';
 import {
   Download,
   Copy,
@@ -49,7 +49,7 @@ export const AdminQRStudio: React.FC<AdminQRStudioProps> = ({ onClose }) => {
   const previewCanvasId = useId();
 
   // Color mapping based on theme
-  const getThemeColors = () => {
+  const getThemeColors = useCallback(() => {
     switch (colorTheme) {
       case 'print-white':
         return {
@@ -68,10 +68,10 @@ export const AdminQRStudio: React.FC<AdminQRStudioProps> = ({ onClose }) => {
           light: '#040914',     // Dark navy
         };
     }
-  };
+  }, [colorTheme]);
 
   // Generate canvas QR and validate live with jsQR
-  const renderAndVerifyQR = async () => {
+  const renderAndVerifyQR = useCallback(async () => {
     setIsGenerating(true);
     try {
       const colors = getThemeColors();
@@ -190,11 +190,11 @@ export const AdminQRStudio: React.FC<AdminQRStudioProps> = ({ onClose }) => {
     } finally {
       setIsGenerating(false);
     }
-  };
+  }, [encodedUrl, getThemeColors, includeCenterLogo, margin]);
 
   useEffect(() => {
     renderAndVerifyQR();
-  }, [encodedUrl, colorTheme, includeCenterLogo, margin]);
+  }, [renderAndVerifyQR]);
 
   // Download High-Res PNG
   const downloadPng = async () => {
