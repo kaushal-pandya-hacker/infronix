@@ -1,90 +1,83 @@
 import React from 'react';
 
 interface BrandLogoProps {
-  size?: number;
   className?: string;
-  showGlow?: boolean;
+  variant?: 'banner' | 'mark';
+  size?: number;
 }
 
 export const BrandLogo: React.FC<BrandLogoProps> = ({
-  size = 48,
   className = '',
-  showGlow = true,
+  variant = 'banner',
+  size = 80,
 }) => {
-  return (
-    <div
-      className={`relative inline-flex items-center justify-center ${className}`}
-      style={{ width: size, height: size }}
-    >
-      {showGlow && (
+  if (variant === 'mark') {
+    return (
+      <div className={`relative inline-flex items-center justify-center ${className}`}>
         <div
-          className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-blue-600 via-cyan-400 to-blue-400 opacity-40 blur-lg animate-pulse"
+          className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#0066FF] via-[#00D4FF] to-blue-400 opacity-30 blur-md animate-pulse"
           style={{ transform: 'scale(1.15)' }}
         />
-      )}
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 100 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="relative z-10 transition-transform duration-300 hover:scale-105"
-      >
-        <defs>
-          <linearGradient id="infronix-grad-main" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#00F0FF" />
-            <stop offset="50%" stopColor="#0066FF" />
-            <stop offset="100%" stopColor="#0035A0" />
-          </linearGradient>
-          <linearGradient id="infronix-shield-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#0B162C" />
-            <stop offset="100%" stopColor="#040914" />
-          </linearGradient>
-          <linearGradient id="infronix-border-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#00F0FF" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#0066FF" stopOpacity="0.3" />
-          </linearGradient>
-          <filter id="infronix-glow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
+        <svg
+          width={size}
+          height={size}
+          viewBox="0 0 100 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="relative z-10"
+        >
+          <defs>
+            <radialGradient id="infronix-mark-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#00D4FF" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="#0066FF" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="50" r="48" fill="url(#infronix-mark-grad)" />
+          
+          {/* 8 Radial Spokes */}
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => {
+            const rad = (deg * Math.PI) / 180;
+            const x1 = 50 + 9 * Math.cos(rad);
+            const y1 = 50 + 9 * Math.sin(rad);
+            const x2 = 50 + 40 * Math.cos(rad);
+            const y2 = 50 + 40 * Math.sin(rad);
+            const xMid = 50 + 24 * Math.cos(rad);
+            const yMid = 50 + 24 * Math.sin(rad);
 
-        {/* Outer Shield / Rounded Polygon */}
-        <rect
-          x="6"
-          y="6"
-          width="88"
-          height="88"
-          rx="22"
-          fill="url(#infronix-shield-bg)"
-          stroke="url(#infronix-border-grad)"
-          strokeWidth="2.5"
-        />
+            return (
+              <g key={deg}>
+                <line
+                  x1={x1}
+                  y1={y1}
+                  x2={x2}
+                  y2={y2}
+                  stroke="#F0F6FF"
+                  strokeWidth="2.6"
+                  strokeLinecap="round"
+                />
+                <circle cx={xMid} cy={yMid} r="3.2" fill="#040914" stroke="#00D4FF" strokeWidth="2" />
+                <circle cx={x2} cy={y2} r="4.2" fill="#F0F6FF" stroke="#0066FF" strokeWidth="1.8" />
+              </g>
+            );
+          })}
 
-        {/* Ambient Inner Shadow/Glow */}
-        <circle cx="50" cy="50" r="32" fill="#0066FF" fillOpacity="0.15" />
+          {/* Central Core */}
+          <circle cx="50" cy="50" r="10.5" fill="#040914" stroke="#00D4FF" strokeWidth="2.5" />
+          <circle cx="50" cy="50" r="5" fill="#0066FF" />
+        </svg>
+      </div>
+    );
+  }
 
-        {/* Geometric "I" & "X" Nexus Symbol */}
-        <path
-          d="M32 28 H42 V72 H32 Z"
-          fill="url(#infronix-grad-main)"
-          rx="2"
-        />
-        {/* Dynamic diagonal crossbar forming the IX / Infronix nexus */}
-        <path
-          d="M48 30 L66 70 H56 L44 42 Z"
-          fill="#00D4FF"
-          opacity="0.9"
-        />
-        <path
-          d="M66 30 L48 70 H58 L72 38 Z"
-          fill="url(#infronix-grad-main)"
-        />
-
-        {/* Glowing cyber node in center */}
-        <circle cx="56" cy="50" r="3.5" fill="#FFFFFF" filter="url(#infronix-glow)" />
-      </svg>
+  // Full Brand Banner (Official Logo with White Typography & Cyan Accents)
+  return (
+    <div className={`relative flex items-center justify-center ${className}`}>
+      <div className="absolute inset-0 bg-[#0066FF]/20 blur-2xl rounded-full scale-95 pointer-events-none" />
+      <img
+        src="./infronix-logo-dark-theme.png"
+        alt="InfronixWeb Agency Logo"
+        className="relative z-10 w-full max-w-[340px] md:max-w-[380px] h-auto object-contain drop-shadow-[0_4px_24px_rgba(0,102,255,0.35)] transition-transform duration-300 hover:scale-105"
+      />
     </div>
   );
 };

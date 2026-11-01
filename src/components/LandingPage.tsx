@@ -2,8 +2,6 @@ import React from 'react';
 import {
   Globe,
   ExternalLink,
-  Sparkles,
-  ShieldCheck,
   ArrowUpRight
 } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
@@ -48,38 +46,15 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
       {/* Main Content Area */}
       <main className="relative z-10 w-full max-w-md px-6 py-12 flex flex-col items-center flex-1 justify-center my-auto">
-        {/* Brand Emblem & Identification */}
-        <div className="flex flex-col items-center text-center mb-8">
-          <div className="mb-5 relative group">
-            <BrandLogo size={96} showGlow={true} />
-            <div className="absolute -bottom-1 -right-1 bg-[#040914] p-1 rounded-full">
-              <div className="bg-[#0066FF] text-white p-1 rounded-full shadow-lg shadow-blue-500/50">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#00D4FF]" />
-              </div>
-            </div>
-          </div>
-
-          {/* Exact Brand Title Requirements */}
-          <div className="space-y-1">
-            <h1 className="text-3xl font-extrabold tracking-wider bg-gradient-to-r from-white via-[#E0EDFF] to-[#8EB8FF] bg-clip-text text-transparent">
-              INFRONIX
-            </h1>
-            <p className="text-sm font-semibold tracking-[0.28em] text-[#00D4FF] uppercase">
-              WEB AGENCY
-            </p>
-          </div>
-
-          {/* Verified pill */}
-          <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-950/40 border border-blue-800/40 text-[11px] font-medium text-blue-200">
-            <Sparkles className="w-3 h-3 text-[#00D4FF]" />
-            <span>Digital Presence & Engineering</span>
-          </div>
+        {/* Official Brand Logo Banner */}
+        <div className="flex flex-col items-center text-center mb-8 w-full">
+          <BrandLogo variant="banner" className="mb-6 w-full px-2" />
 
           {/* Headline & Subtitle */}
-          <div className="mt-6 space-y-2">
-            <h2 className="text-2xl font-bold tracking-tight text-white">
+          <div className="mt-2 space-y-2">
+            <h1 className="text-3xl font-extrabold tracking-tight text-white">
               {siteConfig.headline}
-            </h2>
+            </h1>
             <p className="text-sm text-[#8EA7CC] max-w-xs mx-auto leading-relaxed">
               {siteConfig.subtitle}
             </p>

@@ -101,21 +101,45 @@ async function runVerification() {
   const centerY = (totalH - centerSize) / 2;
 
   const centerLogoSvg = `
-    <!-- INFRONIX Center Emblem with Protective Quiet Zone -->
+    <!-- INFRONIX Official Network Hub Emblem with Protective Quiet Zone -->
     <rect x="${centerX - 1}" y="${centerY - 1}" width="${centerSize + 2}" height="${centerSize + 2}" rx="6" fill="#040914" stroke="#00D4FF" stroke-width="0.8" />
     <g transform="translate(${centerX}, ${centerY})">
       <svg width="${centerSize}" height="${centerSize}" viewBox="0 0 100 100">
-        <defs>
-          <linearGradient id="qr-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#00F0FF" />
-            <stop offset="100%" stop-color="#0066FF" />
-          </linearGradient>
-        </defs>
-        <rect x="8" y="8" width="84" height="84" rx="18" fill="#0B1528" stroke="#0066FF" stroke-width="2"/>
-        <path d="M30 28 H40 V72 H30 Z" fill="url(#qr-logo-grad)" />
-        <path d="M48 30 L66 70 H56 L44 42 Z" fill="#00D4FF" />
-        <path d="M66 30 L48 70 H58 L72 38 Z" fill="url(#qr-logo-grad)" />
-        <circle cx="56" cy="50" r="4" fill="#FFFFFF" />
+        <rect width="100" height="100" rx="18" fill="#040914" />
+        <line x1="58.5" y1="50.0" x2="88.0" y2="50.0" stroke="#F0F6FF" stroke-width="3" stroke-linecap="round" />
+        <circle cx="73.0" cy="50.0" r="3.5" fill="#040914" stroke="#00D4FF" stroke-width="2" />
+        <circle cx="88.0" cy="50.0" r="4.5" fill="#F0F6FF" />
+
+        <line x1="56.0" y1="56.0" x2="76.9" y2="76.9" stroke="#F0F6FF" stroke-width="3" stroke-linecap="round" />
+        <circle cx="66.3" cy="66.3" r="3.5" fill="#040914" stroke="#00D4FF" stroke-width="2" />
+        <circle cx="76.9" cy="76.9" r="4.5" fill="#F0F6FF" />
+
+        <line x1="50.0" y1="58.5" x2="50.0" y2="88.0" stroke="#F0F6FF" stroke-width="3" stroke-linecap="round" />
+        <circle cx="50.0" cy="73.0" r="3.5" fill="#040914" stroke="#00D4FF" stroke-width="2" />
+        <circle cx="50.0" cy="88.0" r="4.5" fill="#F0F6FF" />
+
+        <line x1="44.0" y1="56.0" x2="23.1" y2="76.9" stroke="#F0F6FF" stroke-width="3" stroke-linecap="round" />
+        <circle cx="33.7" cy="66.3" r="3.5" fill="#040914" stroke="#00D4FF" stroke-width="2" />
+        <circle cx="23.1" cy="76.9" r="4.5" fill="#F0F6FF" />
+
+        <line x1="41.5" y1="50.0" x2="12.0" y2="50.0" stroke="#F0F6FF" stroke-width="3" stroke-linecap="round" />
+        <circle cx="27.0" cy="50.0" r="3.5" fill="#040914" stroke="#00D4FF" stroke-width="2" />
+        <circle cx="12.0" cy="50.0" r="4.5" fill="#F0F6FF" />
+
+        <line x1="44.0" y1="44.0" x2="23.1" y2="23.1" stroke="#F0F6FF" stroke-width="3" stroke-linecap="round" />
+        <circle cx="33.7" cy="33.7" r="3.5" fill="#040914" stroke="#00D4FF" stroke-width="2" />
+        <circle cx="23.1" cy="23.1" r="4.5" fill="#F0F6FF" />
+
+        <line x1="50.0" y1="41.5" x2="50.0" y2="12.0" stroke="#F0F6FF" stroke-width="3" stroke-linecap="round" />
+        <circle cx="50.0" cy="27.0" r="3.5" fill="#040914" stroke="#00D4FF" stroke-width="2" />
+        <circle cx="50.0" cy="12.0" r="4.5" fill="#F0F6FF" />
+
+        <line x1="56.0" y1="44.0" x2="76.9" y2="23.1" stroke="#F0F6FF" stroke-width="3" stroke-linecap="round" />
+        <circle cx="66.3" cy="33.7" r="3.5" fill="#040914" stroke="#00D4FF" stroke-width="2" />
+        <circle cx="76.9" cy="23.1" r="4.5" fill="#F0F6FF" />
+
+        <circle cx="50" cy="50" r="11" fill="#040914" stroke="#00D4FF" stroke-width="2.5" />
+        <circle cx="50" cy="50" r="5" fill="#0066FF" />
       </svg>
     </g>
   `;
