@@ -27,15 +27,15 @@ export const siteConfig: AgencyConfig = {
   email: 'contact@infronixweb.in',
   location: 'India',
 
-  // Brand Color Palette (Clean White Theme with Infronix Teal Accents)
+  // Brand Color Palette (Clean White Theme - No Blue)
   colors: {
     background: '#FFFFFF',     // Clean White
-    surface: '#F8FAFC',        // Soft Off-white Card
-    surfaceBorder: '#E2E8F0',  // Subtle Border
-    primary: '#0F172A',        // Deep Obsidian Black
+    surface: '#FFFFFF',        // Pure White Card
+    surfaceBorder: '#E5E7EB',  // Light Gray Border
+    primary: '#000000',        // Pure Black
     accent: '#00C4B4',         // Authentic Infronix Teal
-    textMain: '#0F172A',       // High Contrast Dark Slate
-    textMuted: '#64748B',      // Refined Slate
+    textMain: '#111827',       // Crisp Dark Slate
+    textMuted: '#6B7280',      // Neutral Slate Gray
   },
 
   // Primary Call-To-Action Links

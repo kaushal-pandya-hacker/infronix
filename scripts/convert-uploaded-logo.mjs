@@ -16,3 +16,4 @@ for (let i = 0; i < rawImage.data.length; i += 4) {
 fs.writeFileSync('public/infronix-logo.png', PNG.sync.write(png));
 fs.copyFileSync('public/infronix-logo.png', 'src/assets/infronix-logo.png');
 console.log('✓ Created lossless public/infronix-logo.png from uploaded logo');
+
