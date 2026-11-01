@@ -42,3 +42,4 @@ for (let y = 0; y < h; y++) {
 fs.writeFileSync('public/infronix-logo-bw.png', PNG.sync.write(bwPng));
 fs.copyFileSync('public/infronix-logo-bw.png', 'src/assets/infronix-logo-bw.png');
 console.log('✓ Created public/infronix-logo-bw.png (Pure Black & White Monochrome)');
+

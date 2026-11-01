@@ -14,8 +14,8 @@ export const App: React.FC = () => {
   const [isAdminOpen, setIsAdminOpen] = useState<boolean>(() => checkInitialAdminState());
 
   return (
-    <div className="min-h-screen bg-[#000000] text-[#FFFFFF]">
-      {/* Primary Customer-Facing Smart Landing Page */}
+    <div className="min-h-screen bg-white text-[#0F172A]">
+      {/* Primary Customer-Facing Smart Landing Page in Clean White Theme */}
       <LandingPage />
 
       {/* Admin QR Code Generator & Verification Studio (URL-Activated via ?admin=true) */}
