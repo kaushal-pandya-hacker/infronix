@@ -39,3 +39,4 @@ async function enablePages() {
 }
 
 enablePages().catch(console.error);
+

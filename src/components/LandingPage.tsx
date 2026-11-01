@@ -1,18 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Globe,
   ExternalLink,
-  Share2,
-  Check,
   Sparkles,
   ShieldCheck,
-  QrCode,
-  ArrowUpRight,
-  Contact2
+  ArrowUpRight
 } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
 import { BrandLogo } from './BrandLogo';
-import { downloadVCard } from '../utils/vcard';
 
 const InstagramIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' }) => (
   <svg
@@ -39,48 +34,7 @@ const CURRENT_YEAR = new Date().getFullYear();
 
 export const LandingPage: React.FC<LandingPageProps> = ({
   onOpenAdminQr,
-  isAdminMode = false,
 }) => {
-  const [copied, setCopied] = useState(false);
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
-
-  const showToast = (msg: string) => {
-    setToastMessage(msg);
-    setTimeout(() => {
-      setToastMessage(null);
-    }, 2800);
-  };
-
-  const handleShare = async () => {
-    const shareData = {
-      title: siteConfig.name,
-      text: `${siteConfig.name} — ${siteConfig.subtitle}`,
-      url: window.location.href,
-    };
-
-    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
-      try {
-        await navigator.share(shareData);
-      } catch {
-        // User cancelled or share failed, fallback to copy
-        copyLink();
-      }
-    } else {
-      copyLink();
-    }
-  };
-
-  const copyLink = async () => {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      showToast('Link copied to clipboard!');
-      setTimeout(() => setCopied(false), 2200);
-    } catch {
-      showToast('Unable to copy automatically.');
-    }
-  };
-
   return (
     <div className="relative min-h-screen w-full flex flex-col items-center justify-between overflow-hidden bg-[#040914] text-[#F0F6FF] selection:bg-[#0066FF] selection:text-white">
       {/* Background Ambience: Subtle Radial Glows & Grid Mesh */}
@@ -92,43 +46,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       {/* Secondary Bottom Navy Aura */}
       <div className="pointer-events-none absolute -bottom-48 left-1/2 -translate-x-1/2 w-[700px] h-[500px] rounded-full bg-gradient-to-t from-[#0047B3]/20 via-[#0B1528]/40 to-transparent blur-[140px]" />
 
-      {/* Top Bar / Quick Actions */}
-      <header className="relative z-10 w-full max-w-md px-6 pt-7 flex items-center justify-between">
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0B1528]/80 border border-[#16243E] backdrop-blur-md text-xs font-medium text-[#8EA7CC]">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00D4FF] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0066FF]"></span>
-          </span>
-          <span className="tracking-wide text-slate-300">Official Portal</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          {/* Share Button */}
-          <button
-            onClick={handleShare}
-            aria-label="Share Link"
-            className="p-2.5 rounded-full bg-[#0B1528]/80 border border-[#16243E] hover:border-[#00D4FF]/50 hover:bg-[#0E1A33] text-[#8EA7CC] hover:text-[#00D4FF] transition-all duration-200 active:scale-95"
-            title="Share page"
-          >
-            {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Share2 className="w-4 h-4" />}
-          </button>
-
-          {/* Admin QR Studio Trigger (Only visible to admin or via direct secret toggle) */}
-          {isAdminMode && onOpenAdminQr && (
-            <button
-              onClick={onOpenAdminQr}
-              aria-label="Admin QR Studio"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0066FF]/20 border border-[#0066FF]/60 hover:bg-[#0066FF]/30 text-xs font-medium text-[#00D4FF] transition-all duration-200"
-            >
-              <QrCode className="w-3.5 h-3.5" />
-              <span>QR Studio</span>
-            </button>
-          )}
-        </div>
-      </header>
-
       {/* Main Content Area */}
-      <main className="relative z-10 w-full max-w-md px-6 py-8 flex flex-col items-center flex-1 justify-center">
+      <main className="relative z-10 w-full max-w-md px-6 py-12 flex flex-col items-center flex-1 justify-center my-auto">
         {/* Brand Emblem & Identification */}
         <div className="flex flex-col items-center text-center mb-8">
           <div className="mb-5 relative group">
@@ -156,7 +75,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <span>Digital Presence & Engineering</span>
           </div>
 
-          {/* Headline & Subtitle as specified */}
+          {/* Headline & Subtitle */}
           <div className="mt-6 space-y-2">
             <h2 className="text-2xl font-bold tracking-tight text-white">
               {siteConfig.headline}
@@ -223,26 +142,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <ExternalLink className="w-4 h-4" />
             </div>
           </a>
-
-          {/* Optional Direct Contact Card (vCard) */}
-          <button
-            onClick={downloadVCard}
-            className="w-full py-3 px-4 rounded-xl bg-[#081020]/70 border border-[#16243E] hover:border-slate-700 text-xs font-medium text-[#8EA7CC] hover:text-[#F0F6FF] flex items-center justify-center gap-2 transition-all hover:bg-[#0B1528]"
-          >
-            <Contact2 className="w-3.5 h-3.5 text-[#0066FF]" />
-            <span>Save Contact to Phone (.vcf)</span>
-          </button>
-        </div>
-
-        {/* Agency Value Statement */}
-        <div className="mt-8 p-4 rounded-2xl bg-[#070E1C]/60 border border-[#121E36] text-center w-full">
-          <p className="text-xs text-[#7B93B8] leading-relaxed">
-            {siteConfig.description}
-          </p>
         </div>
       </main>
 
-      {/* Clean Footer (Requirement 6: White-label, no third-party branding) */}
+      {/* Clean Footer (White-label, minimal) */}
       <footer className="relative z-10 w-full max-w-md px-6 py-6 flex flex-col items-center justify-center text-center border-t border-[#0D182E]">
         <div className="flex items-center gap-2 text-xs text-[#5D7399]">
           <span>© {CURRENT_YEAR} {siteConfig.name}</span>
@@ -261,14 +164,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           </button>
         </div>
       </footer>
-
-      {/* Toast Notification */}
-      {toastMessage && (
-        <div className="fixed bottom-6 z-50 px-4 py-2.5 rounded-full bg-[#0B1528] border border-[#00D4FF]/40 text-xs font-semibold text-white shadow-xl shadow-cyan-950/50 animate-bounce flex items-center gap-2">
-          <Sparkles className="w-3.5 h-3.5 text-[#00D4FF]" />
-          <span>{toastMessage}</span>
-        </div>
-      )}
     </div>
   );
 };
+
+export default LandingPage;
