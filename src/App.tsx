@@ -11,18 +11,14 @@ const checkInitialAdminState = (): boolean => {
 };
 
 export const App: React.FC = () => {
-  const [isAdminMode] = useState<boolean>(() => checkInitialAdminState());
   const [isAdminOpen, setIsAdminOpen] = useState<boolean>(() => checkInitialAdminState());
 
   return (
-    <div className="min-h-screen bg-[#040914] text-[#F0F6FF]">
+    <div className="min-h-screen bg-[#000000] text-[#FFFFFF]">
       {/* Primary Customer-Facing Smart Landing Page */}
-      <LandingPage
-        isAdminMode={isAdminMode}
-        onOpenAdminQr={() => setIsAdminOpen(true)}
-      />
+      <LandingPage />
 
-      {/* Admin QR Code Generator & Verification Studio */}
+      {/* Admin QR Code Generator & Verification Studio (URL-Activated via ?admin=true) */}
       {isAdminOpen && (
         <AdminQRStudio
           onClose={() => setIsAdminOpen(false)}

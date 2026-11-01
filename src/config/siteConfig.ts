@@ -27,15 +27,15 @@ export const siteConfig: AgencyConfig = {
   email: 'contact@infronixweb.in',
   location: 'India',
 
-  // Brand Color Palette (Deep Navy, Midnight Slate, Electric Blue, Cyber Cyan)
+  // Brand Color Palette (Pure Monochrome Black & White)
   colors: {
-    background: '#040914',     // Deepest navy void
-    surface: '#0B1528',        // Elevated dark navy card
-    surfaceBorder: '#1A2946',  // Subtle metallic border
-    primary: '#0066FF',        // Electric royal blue
-    accent: '#00D4FF',         // Neon electric cyan glow
-    textMain: '#F0F6FF',       // Crisp cold white
-    textMuted: '#8EA7CC',      // Soft starlight slate
+    background: '#000000',     // Pure black obsidian
+    surface: '#0D0D0D',        // Elevated dark card
+    surfaceBorder: '#262626',  // Minimal border
+    primary: '#FFFFFF',        // Pure white
+    accent: '#A3A3A3',         // Subtle silver
+    textMain: '#FFFFFF',       // Pure white text
+    textMuted: '#A3A3A3',      // Muted silver text
   },
 
   // Primary Call-To-Action Links
