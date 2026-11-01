@@ -44,3 +44,4 @@ function generateInfronixNetworkMarkSvg(size = 100) {
 }
 
 console.log(generateInfronixNetworkMarkSvg(80));
+

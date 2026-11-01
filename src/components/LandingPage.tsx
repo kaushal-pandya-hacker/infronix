@@ -30,9 +30,7 @@ interface LandingPageProps {
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-export const LandingPage: React.FC<LandingPageProps> = ({
-  onOpenAdminQr,
-}) => {
+export const LandingPage: React.FC<LandingPageProps> = () => {
   return (
     <div className="relative min-h-screen w-full flex flex-col items-center justify-between overflow-hidden bg-[#040914] text-[#F0F6FF] selection:bg-[#0066FF] selection:text-white">
       {/* Background Ambience: Subtle Radial Glows & Grid Mesh */}
@@ -126,17 +124,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           <span>© {CURRENT_YEAR} {siteConfig.name}</span>
           <span>•</span>
           <span>All rights reserved</span>
-        </div>
-
-        {/* Secret / Discreet Admin Access Toggle */}
-        <div className="mt-3">
-          <button
-            onClick={onOpenAdminQr}
-            className="text-[11px] text-[#3E5274] hover:text-[#00D4FF] transition-colors focus:outline-none"
-            title="Open Agency QR Code Manager"
-          >
-            Agency QR Suite
-          </button>
         </div>
       </footer>
     </div>

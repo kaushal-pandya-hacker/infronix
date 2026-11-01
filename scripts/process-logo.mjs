@@ -106,3 +106,4 @@ for (let y = 0; y < iconSize; y++) {
 
 fs.writeFileSync('public/infronix-emblem-dark.png', PNG.sync.write(iconPng));
 console.log('✓ Created public/infronix-emblem-dark.png (Radial Node Mark)');
+
