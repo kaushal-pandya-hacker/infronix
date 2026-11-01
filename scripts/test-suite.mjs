@@ -77,7 +77,7 @@ for (const item of qrFilesToDecode) {
   const qr = jsQR(new Uint8ClampedArray(png.data), png.width, png.height);
 
   assert(qr !== null && qr.data.length > 0, `${item.name} decoded by computer vision`);
-  assert(qr.data === 'https://infronix-connect.vercel.app', `${item.name} payload matches landing page URL strictly`);
+  assert(qr.data === 'https://kaushal-pandya-hacker.github.io/infronix/', `${item.name} payload matches landing page URL strictly`);
   assert(!qr.data.includes('instagram.com') && !qr.data.includes('infronixweb.in/'), `${item.name} correctly encodes landing page URL rather than individual links`);
 }
 
@@ -89,3 +89,4 @@ console.log('====================================================\n');
 if (passedChecks !== totalChecks) {
   process.exit(1);
 }
+

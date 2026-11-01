@@ -20,8 +20,8 @@ export const siteConfig: AgencyConfig = {
   description: 'Premium web design, high-performance web applications, and modern digital ecosystems tailored for high-growth brands.',
 
   // URLs
-  // Landing page published URL (Used for QR Code encoding - Requirement 3)
-  publishedUrl: 'https://infronix-connect.vercel.app',
+  // Landing page published URL (Verified Production URL - Requirement 3)
+  publishedUrl: 'https://kaushal-pandya-hacker.github.io/infronix/',
   websiteUrl: 'https://www.infronixweb.in/',
   instagramUrl: 'https://www.instagram.com/infronixwebagency2026?vrfl=ODdvZ3l6N3d1Z3F2',
   email: 'contact@infronixweb.in',

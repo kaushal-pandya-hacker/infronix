@@ -4,8 +4,8 @@ import QRCode from 'qrcode';
 import { PNG } from 'pngjs';
 import jsQR from 'jsqr';
 
-// Master target landing page URL (Must encode this, NOT individual links)
-const TARGET_URL = 'https://infronix-connect.vercel.app';
+// Master target landing page URL (Verified Production URL)
+const TARGET_URL = 'https://kaushal-pandya-hacker.github.io/infronix/';
 
 console.log('--------------------------------------------------');
 console.log('INFRONIX SMART QR GENERATOR & DECODER TEST RUNNER');
@@ -162,3 +162,4 @@ runVerification().catch(err => {
   console.error('Verification error:', err);
   process.exit(1);
 });
+

@@ -4,7 +4,7 @@ import QRCode from 'qrcode';
 import { PNG } from 'pngjs';
 import jsQR from 'jsqr';
 
-const TARGET_URL = 'https://infronix-connect.vercel.app';
+const TARGET_URL = 'https://kaushal-pandya-hacker.github.io/infronix/';
 
 async function generateReadyToSharePNGs() {
   console.log('Generating Ready-to-Share HD PNG QR codes...');
@@ -158,3 +158,4 @@ async function generateReadyToSharePNGs() {
 }
 
 generateReadyToSharePNGs().catch(console.error);
+
